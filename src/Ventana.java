@@ -24,6 +24,9 @@ public class Ventana {
     private Lista biblioteca = new Lista();
 
     public Ventana() {
+        SpinnerNumberModel snm = new SpinnerNumberModel(2000,2000,2026,1);
+        spiAnio.setModel(snm);
+
         btnAgregar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
