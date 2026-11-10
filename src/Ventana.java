@@ -21,6 +21,8 @@ public class Ventana {
     private JTextField txtBuscar;
     private JButton btnBuscar;
     private JList lstLibros;
+    private JTextField txtCompare;
+    private JButton btnComparar;
     private Lista biblioteca = new Lista();
 
     public Ventana() {

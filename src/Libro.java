@@ -17,7 +17,7 @@ public class Libro {
 
     @Override
     public String toString() {
-        return "Libro" +
+        return "Libro " +
                 "codigo=" + codigo +
                 ", autor='" + autor + '\'' +
                 ", titulo='" + titulo + '\'' +
