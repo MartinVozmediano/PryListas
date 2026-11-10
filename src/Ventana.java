@@ -83,8 +83,11 @@ public class Ventana {
     }
 
     public static void main(String[] args) {
-
+        JFrame frame = new JFrame("Ventana");
+        frame.setContentPane(new Ventana().principal);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
     }
-
 
 }
