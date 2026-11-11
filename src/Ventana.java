@@ -23,10 +23,14 @@ public class Ventana {
     private JList lstLibros;
     private JTextField txtCompare;
     private JButton btnComparar;
+    private JList lstCompare;
+    private JLabel lblBinaria;
+    private JPanel Jpanel;
+    private JLabel lblSecuencial;
     private Lista biblioteca = new Lista();
 
     public Ventana() {
-        SpinnerNumberModel snm = new SpinnerNumberModel(2000,2000,2026,1);
+        SpinnerNumberModel snm = new SpinnerNumberModel(2000, 2000, 2026, 1);
         spiAnio.setModel(snm);
 
         btnAgregar.addActionListener(new ActionListener() {
@@ -71,18 +75,50 @@ public class Ventana {
                         String titulo = txtBuscar.getText();
                         ArrayList libros = biblioteca.buscar(titulo);
                         dlm.addAll(libros);
-                        if(dlm.isEmpty()){
+                        if (dlm.isEmpty()) {
                             dlm.addElement("No se encontraron coincidencias");
                         }
                         break;
 
                     case 2:     //Mostrar todos
                         dlm.addAll(biblioteca.getLibros());
-                        if(dlm.isEmpty()){
+                        if (dlm.isEmpty()) {
                             dlm.addElement("No se encontraron coincidencias");
                         }
                         break;
                 }
+            }
+        });
+
+        btnComparar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DefaultListModel dlm = new DefaultListModel<>();
+                lstCompare.setModel(dlm);
+
+                int cod = Integer.parseInt(txtCompare.getText());
+
+                try {
+                    Libro resB = biblioteca.binario(cod);
+                    dlm.addElement(resB);
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null,
+                            ex.getMessage());
+                }
+
+                try {
+                    Libro resL = biblioteca.secuencial(cod);
+                    dlm.addElement(resL);
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null,
+                            ex.getMessage());
+                }
+
+                //Contadores de Iteraciones
+                lblBinaria.setText("Iteraciones: " + biblioteca.getContB());
+                lblSecuencial.setText("Iteraciones: " + biblioteca.getContS());
+                biblioteca.setContB(0);
+                biblioteca.setContS(0);
             }
         });
     }

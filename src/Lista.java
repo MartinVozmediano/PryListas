@@ -4,6 +4,8 @@ import java.util.List;
 public class Lista {
 
     private List<Libro> libros;
+    private int contB = 0;
+    private int contS = 0;
 
     public Lista() {
         libros = new ArrayList<>();
@@ -136,6 +138,16 @@ public class Lista {
         return resultado;
     }
 
+    public Libro secuencial(int codigo) throws Exception {
+        for (Libro l : libros) {
+            if (l.getCodigo() == codigo) {
+                return l;
+            }
+            contS++;
+        }
+        throw new Exception("No existe un libro con ese codigo");
+    }
+
     public Libro binario(int codigo) throws Exception {
         if (libros.isEmpty()) {
             throw new Exception("La lista esta vacia");
@@ -157,16 +169,31 @@ public class Lista {
             } else {
                 i = c + 1;
             }
+            contB++;
         }
         throw new Exception("No existe un libro con ese codigo");
 
     }
 
-    public ArrayList<Libro> getLibros(){
+    public ArrayList<Libro> getLibros() {
         return (ArrayList<Libro>) libros;
     }
 
+    public int getContB() {
+        return contB;
+    }
 
+    public int getContS() {
+        return contS;
+    }
+
+    public void setContB(int contB) {
+        this.contB = contB;
+    }
+
+    public void setContS(int contS) {
+        this.contS = contS;
+    }
 }
 
 
