@@ -61,7 +61,7 @@ public class Ventana {
 
                 switch (index) {
                     case 0:     //Busqueda por codigo
-                        if (txtBuscar.getText().trim().compareTo("") != 0) {
+                        //if (txtBuscar.getText().trim().compareTo("") != 0) {
                             int codigo = Integer.parseInt(txtBuscar.getText());
                             try {
                                 Libro l1 = biblioteca.binario(codigo);
@@ -70,7 +70,7 @@ public class Ventana {
                                 JOptionPane.showMessageDialog(null,
                                         ex.getMessage());
                             }
-                        }
+                        //}
                         break;
 
                     case 1:     //Busqueda por titulo
