@@ -61,13 +61,15 @@ public class Ventana {
 
                 switch (index) {
                     case 0:     //Busqueda por codigo
-                        int codigo = Integer.parseInt(txtBuscar.getText());
-                        try {
-                            Libro l1 = biblioteca.binario(codigo);
-                            dlm.addElement(l1.toString());
-                        } catch (Exception ex) {
-                            JOptionPane.showMessageDialog(null,
-                                    ex.getMessage());
+                        if (txtBuscar.getText().trim().compareTo("") != 0) {
+                            int codigo = Integer.parseInt(txtBuscar.getText());
+                            try {
+                                Libro l1 = biblioteca.binario(codigo);
+                                dlm.addElement(l1.toString());
+                            } catch (Exception ex) {
+                                JOptionPane.showMessageDialog(null,
+                                        ex.getMessage());
+                            }
                         }
                         break;
 

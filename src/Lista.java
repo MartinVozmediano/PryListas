@@ -115,7 +115,7 @@ public class Lista {
         libros.add(new Libro(100, "Yuval Noah Harari", "Homo Deus", "Historia", 2015));
     }
 
-    public void agregar(Libro dato) throws Exception {
+    /*public void agregar(Libro dato) throws Exception {
         if (libros.isEmpty()) {
             libros.add(dato);
         } else {
@@ -125,6 +125,36 @@ public class Lista {
                 throw new Exception("Datos no ordenados o duplicados");
             }
         }
+    }*/
+
+    public void agregar(Libro dato) throws Exception {
+        if (unico(dato)) {
+            libros.add(dato);
+            ordenar();
+        } else
+            throw new Exception("El dato ingresado ya existe");
+    }
+
+    public void ordenar() {
+        Libro aux;
+        for (int i = 0; i < libros.size() - 1; i++) {
+            for (int j = 0; j < libros.size(); j++) {
+                if (libros.get(i).getCodigo() > libros.get(j).getCodigo()) {
+                    aux = libros.get(i);
+                    libros.set(i, libros.get(j));
+                    libros.set(j, aux);
+                }
+
+            }
+        }
+    }
+
+    public boolean unico(Libro dato) {
+        for (Libro l : libros) {
+            if (l.getCodigo() == dato.getCodigo())
+                return false;
+        }
+        return true;
     }
 
     public ArrayList<Libro> buscar(String texto) {
